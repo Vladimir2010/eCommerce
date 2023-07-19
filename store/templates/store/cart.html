@@ -14,7 +14,8 @@
                         <th><h5>Продукти: <strong>3</strong></h5></th>
                         <th><h5>Цена: <strong>60</strong></h5></th>
                         <th>
-                            <a style="float:right; margin:5px"class="btn btn-success" href="{%  url 'checkout' %}" >Приключете поръчката</a>
+                            <a style="float:right; margin:5px" class="btn btn-success" href="{% url 'checkout' %}">Приключете
+                                поръчката</a>
                         </th>
                     </tr>
                 </table>
@@ -32,7 +33,7 @@
                 </div>
                 <div class="cart-row">
                     <div style="flex:3;">
-{#                        <img class="row-image" src="{% static 'images/placeholder-img.png' %}" alt="placeholder">#}
+                        {#                        <img class="row-image" src="{% static 'images/placeholder-img.png' %}" alt="placeholder">#}
                         <img class="row-image" src="{% static 'images/placeholder-img.png' %}" alt="up arrow">
                     </div>
                     <div style="flex:3;">
