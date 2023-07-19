@@ -1,7 +1,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'store' %}">eStore</a>
+    <a class="navbar-brand" href="{% url 'store' %}">eStore</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,11 +14,35 @@
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-     	<a href="#"class="btn btn-warning">Login</a>
+            <a href="#" class="btn">Login</a>
 
-     	<a href="{% url 'cart' %}">
-    		<img id="cart-icon" src="{% static 'images/cart.png' %}">
-    	</a>
-    	<p id="cart-total">0</p>
-    </div>
+            <a href="{% url 'cart' %}">
+                <img id="cart-icon" src="{% static 'images/cart.png' %}">
+            </a>
+            <p id="cart-total">0</p>
+        </div>
 </nav>
+
+
+{#<nav class="navbar navbar-expand-lg navbar-dark bg-dark">#}
+{#        <a class="navbar-brand" href="{% url 'store' %}">eStore</a>#}
+{#    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"#}
+{#            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
+{#        <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+{##}
+{#    <div class="collapse navbar-collapse" id="navbarSupportedContent">#}
+{#        <ul class="navbar-nav mr-auto">#}
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>#}
+{#            </li>#}
+{#        </ul>#}
+{#        <div class="form-inline my-2 my-lg-0">#}
+{#     	<a href="#"class="btn btn-warning">Login</a>#}
+{##}
+{#     	<a href="{% url 'cart' %}">#}
+{#    		<img  id="cart-icon" style="width:25px;	display: inline-block;	margin-left: 15px;" src="{% static 'images/cart.png' %}">#}
+{#    	</a>#}
+{#    	<p id="cart-total">0</p>#}
+{#    </div>#}
+{#</nav>#}
