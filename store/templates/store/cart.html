@@ -20,7 +20,6 @@
                     </tr>
                 </table>
             </div>
-
             <br>
 
             <div class="box-element">
@@ -31,19 +30,21 @@
                     <div style="flex:1;"><strong>Брой</strong></div>
                     <div style="flex:1;"><strong>Общо: </strong></div>
                 </div>
+                {% for item in items %}
+
                 <div class="cart-row">
                     <div style="flex:3;">
                         {#                        <img class="row-image" src="{% static 'images/placeholder-img.png' %}" alt="placeholder">#}
-                        <img class="row-image" src="{% static 'images/placeholder-img.png' %}" alt="up arrow">
+                        <img class="row-image" src="{{ item.product.imageURL }}" alt="up arrow">
                     </div>
                     <div style="flex:3;">
-                        Product 1
+                        {{ item.product.name }}
                     </div>
                     <div style="flex:1;">
-                        20 лв.
+                        {{ item.product.price|floatformat:2 }}
                     </div>
                     <div style="flex:1;">
-                        <p class="quantity">2</p>
+                        <p class="quantity">{{ item.quantity }}</p>
                         <div class="quantity">
                             <img class="chg-quantity" src="{% static 'images/up-arrow.png' %}" alt="up arrow">
                             <img class="chg-quantity" src="{% static 'images/down-arrow.png' %}" alt="down arrow">
@@ -54,7 +55,7 @@
                     </div>
                 </div>
 
-
+                {% endfor %}
             </div>
         </div>
     </div>
