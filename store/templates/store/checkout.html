@@ -8,31 +8,31 @@
                 <form id="form">
                     <div id="user-info">
                         <div class="form-field">
-                            <input required class="form-control" type="text" name="name" placeholder="Name..">
+                            <input required class="form-control" type="text" name="Name" placeholder="Име и Фамилия">
                         </div>
                         <div class="form-field">
-                            <input required class="form-control" type="email" name="email" placeholder="Email..">
+                            <input required class="form-control" type="email" name="Email" placeholder="Имейл">
                         </div>
                     </div>
                     <div id="shipping-info">
                         <hr>
-                        <p>Shipping Information:</p>
+                        <p>Информация за доставка: </p>
                         <hr>
                         <div class="form-field">
-                            <input class="form-control" type="text" name="address" placeholder="Address..">
+                            <input class="form-control" type="text" name="address" placeholder="Адрес">
                         </div>
                         <div class="form-field">
-                            <input class="form-control" type="text" name="city" placeholder="City..">
+                            <input class="form-control" type="text" name="city" placeholder="Град">
                         </div>
                         <div class="form-field">
-                            <input class="form-control" type="text" name="state" placeholder="State..">
+                            <input class="form-control" type="text" name="state" id="state" placeholder="Държава">
                         </div>
                         <div class="form-field">
-                            <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+                            <input class="form-control" type="text" name="zipcode" placeholder="Пощенски код">
                         </div>
-                        <div class="form-field">
-                            <input class="form-control" type="text" name="country" placeholder="Zip code..">
-                        </div>
+                        {#                        <div class="form-field">#}
+                        {#                            <input class="form-control" type="text" name="country" placeholder="Zip code..">#}
+                        {#                        </div>#}
                     </div>
                     <hr>
                     <input id="form-button" class="btn btn-success btn-block" type="submit" value="Продължи">
@@ -49,19 +49,42 @@
             <div class="box-element">
                 <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Върнете се в количката</a>
                 <hr>
-                <h3>Order Summary</h3>
+                <h3>Обобщение на поръчката</h3>
                 <hr>
                 {% for item in items %}
-                <div class="cart-row">
-                    <div style="flex:2"><img class="row-image" src="{{ item.product.image.url }}"></div>
-                    <div style="flex:2"><p>{{ item.product.name }}</p></div>
-                    <div style="flex:1"><p>{{ item.product.price }} лв.</p></div>
-                    <div style="flex:1"><p>x{{ item.quantity }}</p></div>
-                </div>
-               {% endfor %}
+                    <div class="cart-row">
+                        <div style="flex:2"><img class="row-image" src="{{ item.product.image.url }}"></div>
+                        <div style="flex:2"><p>{{ item.product.name }}</p></div>
+                        <div style="flex:1"><p>{{ item.product.price }} лв.</p></div>
+                        <div style="order summaryflex:1"><p>x{{ item.quantity }}</p></div>
+                    </div>
+                {% endfor %}
                 <h5>Продукти: {{ order.get_cart_items }}</h5>
                 <h5>Общо: {{ order.get_cart_total|floatformat:2 }} лв.</h5>
             </div>
         </div>
     </div>
+
+    <div>
+        <script type="text/javascript">
+            var shipping = '{{ order.shipping }}'
+            console.log(shipping)
+            if (shipping === 'False') {
+                document.getElementById('shipping-info').innerHTML = ''
+            }
+
+            var form = document.getElementById('form')
+            form.addEventListener('submit', function (e) {
+                e.preventDefault()
+                console.log('Form Submitted...')
+                document.getElementById('form-button').classList.add("hidden");
+                document.getElementById('payment-info').classList.remove("hidden")
+            })
+        </script>
+
+        <script>
+            document.getElementById('state').value = 'България';
+        </script>
+    </div>
+
 {% endblock %}
