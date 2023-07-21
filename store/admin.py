@@ -1,13 +1,13 @@
 from django.contrib import admin
 from .models import (Customer,
-                     ProductsModel,
-                     OrderModel,
-                     OrderItemModel,
-                     ShippingAddressModel)
+                     Products,
+                     Order,
+                     OrderItems,
+                     ShippingAddress)
 
 # Register your models here.
 admin.site.register(Customer)
-admin.site.register(ProductsModel)
-admin.site.register(OrderModel)
-admin.site.register(OrderItemModel)
-admin.site.register(ShippingAddressModel)
+admin.site.register(Products)
+admin.site.register(Order)
+admin.site.register(OrderItems)
+admin.site.register(ShippingAddress)

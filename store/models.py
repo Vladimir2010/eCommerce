@@ -11,7 +11,7 @@ class Customer(models.Model):
         return self.name
 
 
-class ProductsModel(models.Model):
+class Products(models.Model):
     name = models.CharField(max_length=150, null=True)
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True)
@@ -29,7 +29,7 @@ class ProductsModel(models.Model):
         return url
 
 
-class OrderModel(models.Model):
+class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
@@ -40,27 +40,27 @@ class OrderModel(models.Model):
 
     @property
     def get_cart_total(self):
-        ordered_items = self.orderitem_set.all()
+        ordered_items = self.orderitems_set.all()
         total = sum([item.get_total for item in ordered_items])
         return total
 
     @property
     def get_cart_items(self):
-        ordered_items = self.orderitem_set.all()
+        ordered_items = self.orderitems_set.all()
         total = sum([item.quantity for item in ordered_items])
         return total
 
 
-class OrderItemModel(models.Model):
-    product = models.ForeignKey(ProductsModel, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(OrderModel, on_delete=models.SET_NULL, null=True)
+class OrderItems(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
 
-class ShippingAddressModel(models.Model):
+class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(OrderModel, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     address = models.CharField(max_length=150, null=False)
     city = models.CharField(max_length=150, null=False)
     state = models.CharField(max_length=150, null=False)
