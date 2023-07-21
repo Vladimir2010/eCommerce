@@ -10,7 +10,7 @@
             <div class="box-element product" style="width: 315px; padding-right: 20px">
                 <a href="#"><h6><strong>{{ product.name }}</strong></h6></a>
                 <hr>
-                <button class="btn btn-outline-secondary add-btn">Добави в количката</button>
+                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Добави в количката</button>
 {#                <a  class="btn btn-outline-success" href="#">Виж продукта</a>#}
                 <h4 style="display: inline-block; float: right">{{ product.price|floatformat:2 }}</h4>
             </div>

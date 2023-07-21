@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <hr>
-                    <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+                    <input id="form-button" class="btn btn-success btn-block" type="submit" value="Продължи">
 
                 </form>
             </div>
@@ -49,18 +49,18 @@
             <div class="box-element">
                 <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Върнете се в количката</a>
                 <hr>
-                <h3>
-                    Order Summary
-                </h3>
+                <h3>Order Summary</h3>
                 <hr>
+                {% for item in items %}
                 <div class="cart-row">
-                    <div style="flex:2"><img class="row-image" src="{% static 'images/placeholder-img.png' %}"></div>
-                    <div style="flex:2"><p>Продукт 1</p></div>
-                    <div style="flex:1"><p>20.00 лв.</p></div>
-                    <div style="flex:1"><p>x2</p></div>
+                    <div style="flex:2"><img class="row-image" src="{{ item.product.image.url }}"></div>
+                    <div style="flex:2"><p>{{ item.product.name }}</p></div>
+                    <div style="flex:1"><p>{{ item.product.price }} лв.</p></div>
+                    <div style="flex:1"><p>x{{ item.quantity }}</p></div>
                 </div>
-                <h5>Продукти:   2</h5>
-				<h5>Общо:   40.00 лв.</h5>
+               {% endfor %}
+                <h5>Продукти: {{ order.get_cart_items }}</h5>
+                <h5>Общо: {{ order.get_cart_total|floatformat:2 }} лв.</h5>
             </div>
         </div>
     </div>

@@ -11,8 +11,8 @@
                 <br>
                 <table>
                     <tr>
-                        <th><h5>Продукти: <strong>3</strong></h5></th>
-                        <th><h5>Цена: <strong>60</strong></h5></th>
+                        <th><h5>Продукти: <strong>{{ order.get_cart_items }}</strong></h5></th>
+                        <th><h5>Цена: <strong>{{ order.get_cart_total|floatformat:2 }}</strong></h5></th>
                         <th>
                             <a style="float:right; margin:5px" class="btn btn-success" href="{% url 'checkout' %}">Приключете
                                 поръчката</a>
@@ -51,11 +51,12 @@
                         </div>
                     </div>
                     <div style="flex:1;">
-                        Общо: 40 лв.
+                        Общо: {{ item.get_total|floatformat:2 }} лв.
                     </div>
                 </div>
 
                 {% endfor %}
+
             </div>
         </div>
     </div>
